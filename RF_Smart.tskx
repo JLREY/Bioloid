@@ -1,0 +1,416 @@
+﻿version 4.00
+cm_version 1.0
+platform CM-530
+o // param_text:Proyecto: Carro con Trayectoria Guardada o Establecida ~(^_^)~
+o main
+o begin
+- 
+o while(1)
+o begin
+o load param_dest:cm:22 param_src:channel_num:2
+o if param_src:cm:2 lop:== param_src:bool_num:1 rop:then
+o begin
+o load param_dest:var:DatoRecibido param_src:cm:1
+o compute param_dest:var:TeclaControl param_src:var:DatoRecibido aop:& param_src:rc100z_num:15
+- 
+o if param_src:var:TeclaControl lop:== param_src:dec_num:1 rop:then
+o begin
+o // param_text:Velocidades
+o load param_dest:var:ForwardSpeed param_src:dec_num:700
+o load param_dest:var:ReverseSpeed param_src:dec_num:500
+o load param_dest:var:RotatingSpeed param_src:dec_num:600
+o // param_text:Avanza
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:4
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o elseif param_src:var:TeclaControl lop:== param_src:dec_num:2 rop:then
+o begin
+o // param_text:Velocidades
+o load param_dest:var:ForwardSpeed param_src:dec_num:700
+o load param_dest:var:ReverseSpeed param_src:dec_num:500
+o load param_dest:var:RotatingSpeed param_src:dec_num:600
+o // param_text:Reversa
+o call faddr_dest:Reverse
+o load param_dest:cm:5 param_src:timer_num:4
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o elseif param_src:var:TeclaControl lop:== param_src:dec_num:4 rop:then
+o begin
+o // param_text:Velocidades
+o load param_dest:var:ForwardSpeed param_src:dec_num:700
+o load param_dest:var:ReverseSpeed param_src:dec_num:500
+o load param_dest:var:RotatingSpeed param_src:dec_num:600
+o // param_text:Giro izquierda
+o call faddr_dest:TurnLeft
+o load param_dest:cm:5 param_src:timer_num:4
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o elseif param_src:var:TeclaControl lop:== param_src:dec_num:8 rop:then
+o begin
+o // param_text:Velocidades
+o load param_dest:var:ForwardSpeed param_src:dec_num:700
+o load param_dest:var:ReverseSpeed param_src:dec_num:500
+o load param_dest:var:RotatingSpeed param_src:dec_num:600
+o // param_text:Giro derecha
+o call faddr_dest:TurnRight
+o load param_dest:cm:5 param_src:timer_num:4
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o else
+o begin
+x load param_dest:cm:5 param_src:timer_num:1
+x wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+x load param_dest:var:TeclaControl param_src:dec_num:0
+o end
+o end
+- 
+o // param_text:Modo programado
+o if param_src:cm:4 lop:== param_src:button_num:2 rop:then
+o begin
+o // param_text:Velocidades
+o load param_dest:var:ForwardSpeed param_src:dec_num:1000
+o load param_dest:var:ReverseSpeed param_src:dec_num:300
+o load param_dest:var:RotatingSpeed param_src:dec_num:300
+o // param_text:Avanza hacia el Frente1
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:44
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Derecha1
+o call faddr_dest:TurnRight
+o load param_dest:cm:5 param_src:timer_num:41
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente2
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:29
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Izquierda1
+o call faddr_dest:TurnLeft
+o load param_dest:cm:5 param_src:timer_num:37
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente3
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:27
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente4
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:29
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Derecha3
+o call faddr_dest:TurnRight
+o load param_dest:cm:5 param_src:timer_num:41
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente5
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:58
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Izquierda2
+o // param_text:Avanza hacia el Frente6
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:24
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Izquierda3
+o call faddr_dest:TurnLeft
+o load param_dest:cm:5 param_src:timer_num:36
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente7
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:55
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Derecha4
+o call faddr_dest:TurnRight
+o load param_dest:cm:5 param_src:timer_num:41
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente8
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:24
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Gira hacia la Izquierda4
+o call faddr_dest:TurnLeft
+o load param_dest:cm:5 param_src:timer_num:36
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:TimerStandby
+o // param_text:Avanza hacia el Frente9
+o call faddr_dest:Forward
+o load param_dest:cm:5 param_src:timer_num:5
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o end
+- 
+o // param_text:Assembly check
+o label laddr_src:AssemblyCheckMode
+o // param_text:Assembly check melody
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:1
+- 
+o load param_dest:var:ID param_src:dec_num:1
+o load param_dest:motor:254:107 param_src:dir_num:100
+o load param_dest:motor:254:100 param_src:bool_num:0
+o load param_dest:motor:254:101 param_src:bool_num:0
+o load param_dest:cm:5 param_src:timer_num:12
+o call faddr_dest:WaitTimerCompletion
+- 
+o while(1)
+o begin
+o if param_src:cm:4 lop:== param_src:button_num:8 rop:then
+o begin
+o load param_dest:motor:254:100 param_src:bool_num:0
+o load param_dest:cm:5 param_src:timer_num:5
+o load param_dest:cm:18 param_src:buzzertime_num:5
+o load param_dest:cm:17 param_src:scale_num:15
+o call faddr_dest:WaitTimerCompletion
+o if param_src:var:ID lop:< param_src:dec_num:4 rop:then
+o begin
+o load param_dest:custom:b:ID:24 param_src:dec_num:0
+o load param_dest:custom:b:ID:25 param_src:dec_num:0
+o compute param_dest:var:ID param_src:var:ID aop:+ param_src:dec_num:1
+o end
+o end
+o elseif param_src:cm:4 lop:== param_src:button_num:4 rop:then
+o begin
+o load param_dest:motor:254:100 param_src:bool_num:0
+o load param_dest:cm:5 param_src:timer_num:5
+o load param_dest:cm:18 param_src:buzzertime_num:5
+o load param_dest:cm:17 param_src:scale_num:3
+o call faddr_dest:WaitTimerCompletion
+o if param_src:var:ID lop:> param_src:dec_num:1 rop:then
+o begin
+o load param_dest:custom:b:ID:24 param_src:dec_num:0
+o load param_dest:custom:b:ID:25 param_src:dec_num:0
+o compute param_dest:var:ID param_src:var:ID aop:- param_src:dec_num:1
+o end
+o end
+o elseif param_src:cm:4 lop:== param_src:button_num:1 rop:then
+o jump laddr_dest:SensorCheckMode
+o if param_src:custom:b:ID:3 lop:!= param_src:var:ID rop:then
+o begin
+o if param_src:cm:18 lop:== param_src:buzzertime_num:0 rop:then
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:16
+o end
+o end
+o elseif param_src:custom:w:ID:34 lop:== param_src:dec_num:0 rop:then
+o begin
+o if param_src:cm:18 lop:== param_src:buzzertime_num:0 rop:then
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:18
+o end
+o end
+o else
+o begin
+o if param_src:custom:w:ID:8 lop:== param_src:dec_num:1023 rop:then
+o begin
+o load param_dest:custom:w:ID:30 param_src:dec_num:512
+o load param_dest:custom:b:ID:25 param_src:dec_num:1
+o end
+o else
+o begin
+o load param_dest:custom:w:ID:32 param_src:dec_num:512
+o load param_dest:custom:b:ID:25 param_src:dec_num:1
+o end
+o end
+o end
+o label laddr_src:SensorCheckMode
+o load param_dest:motor:254:107 param_src:dir_num:100
+o load param_dest:motor:254:101 param_src:bool_num:0
+o load param_dest:motor:254:100 param_src:bool_num:0
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:10
+o call faddr_dest:AssemblyCheckPosition
+o while(1)
+o begin
+o if param_src:cm:4 lop:== param_src:button_num:2 rop:then
+o jump laddr_dest:AssemblyCheckMode
+o if param_src:aux:1:63 lop:>= param_src:dec_num:50 rop:then
+o begin
+o load param_dest:custom:w:3:32 param_src:dec_num:512
+o load param_dest:custom:w:4:32 param_src:dec_num:512
+o end
+o else
+o begin
+o load param_dest:custom:w:3:32 param_src:dec_num:0
+o load param_dest:custom:w:4:32 param_src:dec_num:0
+o end
+o if param_src:aux:2:63 lop:>= param_src:dec_num:50 rop:then
+o begin
+o load param_dest:custom:w:1:32 param_src:dec_num:512
+o load param_dest:custom:w:2:32 param_src:dec_num:512
+o end
+o else
+o begin
+o load param_dest:custom:w:1:32 param_src:dec_num:0
+o load param_dest:custom:w:2:32 param_src:dec_num:0
+o end
+o end
+o // param_text:Assembly check
+o end
+- 
+o function faddr_src:AvoidCliff
+o begin
+o call faddr_dest:Reverse
+- 
+o load param_dest:cm:5 param_src:dec_num:12
+o call faddr_dest:TimerStandby
+- 
+o call faddr_dest:FallbackRight
+- 
+o load param_dest:cm:5 param_src:dec_num:16
+o call faddr_dest:TimerStandby
+- 
+o call faddr_dest:Forward
+o end
+- 
+o function faddr_src:AvoidObject
+o begin
+o call faddr_dest:Reverse
+- 
+o load param_dest:cm:5 param_src:dec_num:6
+o call faddr_dest:TimerStandby
+- 
+o call faddr_dest:TurnRight
+- 
+o load param_dest:cm:5 param_src:dec_num:12
+o call faddr_dest:TimerStandby
+- 
+o call faddr_dest:Forward
+o end
+- 
+o function faddr_src:TimerStandby
+o begin
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+o function faddr_src:Stop
+o begin
+o load param_dest:motor:1:107 param_src:dec_num:0
+o load param_dest:motor:2:107 param_src:dec_num:0
+o load param_dest:motor:3:107 param_src:dec_num:0
+o load param_dest:motor:4:107 param_src:dec_num:0
+o end
+- 
+o function faddr_src:Forward
+o begin
+o compute param_dest:motor:1:107 param_src:dir_num:1024 aop:+ param_src:var:ForwardSpeed
+o compute param_dest:motor:2:107 param_src:dir_num:0 aop:+ param_src:var:ForwardSpeed
+o compute param_dest:motor:3:107 param_src:dir_num:1024 aop:+ param_src:var:ForwardSpeed
+o compute param_dest:motor:4:107 param_src:dir_num:0 aop:+ param_src:var:ForwardSpeed
+o end
+- 
+o function faddr_src:Reverse
+o begin
+o compute param_dest:motor:1:107 param_src:dir_num:0 aop:+ param_src:var:ReverseSpeed
+o compute param_dest:motor:2:107 param_src:dir_num:1024 aop:+ param_src:var:ReverseSpeed
+o compute param_dest:motor:3:107 param_src:dir_num:0 aop:+ param_src:var:ReverseSpeed
+o compute param_dest:motor:4:107 param_src:dir_num:1024 aop:+ param_src:var:ReverseSpeed
+o end
+- 
+o function faddr_src:TurnRight
+o begin
+o load param_dest:motor:1:107 param_src:dec_num:0
+o compute param_dest:motor:2:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o load param_dest:motor:3:107 param_src:dec_num:0
+o compute param_dest:motor:4:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o end
+- 
+o function faddr_src:TurnLeft
+o begin
+o compute param_dest:motor:1:107 param_src:dir_num:1024 aop:+ param_src:var:RotatingSpeed
+o load param_dest:motor:2:107 param_src:dec_num:0
+o compute param_dest:motor:3:107 param_src:dir_num:1024 aop:+ param_src:var:RotatingSpeed
+o load param_dest:motor:4:107 param_src:dec_num:0
+o end
+o function faddr_src:FallbackRight
+o begin
+o compute param_dest:motor:1:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o compute param_dest:motor:2:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o compute param_dest:motor:3:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o compute param_dest:motor:4:107 param_src:dir_num:0 aop:+ param_src:var:RotatingSpeed
+o end
+- 
+o function faddr_src:ActuatorInitialization
+o begin
+o load param_dest:custom:w:1:8 param_src:bin_num:0
+o load param_dest:custom:w:2:8 param_src:bin_num:0
+o load param_dest:custom:w:3:8 param_src:bin_num:0
+o load param_dest:custom:w:4:8 param_src:bin_num:0
+o end
+- 
+- 
+o function faddr_src:Advance
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:3
+o end
+o function faddr_src:Retreat
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:4
+o end
+o function faddr_src:ForwardLeft
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:1
+o call faddr_dest:TurnLeft
+o load param_dest:cm:5 param_src:timer_num:24
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o function faddr_src:ForwardRight
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:1
+o call faddr_dest:TurnRight
+o load param_dest:cm:5 param_src:timer_num:24
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o call faddr_dest:Stop
+o end
+o // param_text:Seembly check
+o function faddr_src:WaitTimerCompletion
+o begin
+o wait param_src:cm:5 lop:> param_src:timer_num:0 rop:then
+o end
+- 
+o function faddr_src:AssemblyCheckPosition
+o begin
+o for param_var:ID param_src:dec_num:1 param_src:dec_num:4
+o begin
+o load param_dest:custom:w:ID:30 param_src:dec_num:512
+o end
+o end
+- 
+o function faddr_src:AssemblyError
+o begin
+o load param_dest:motor:254:107 param_src:dir_num:100
+o load param_dest:motor:254:100 param_src:bool_num:0
+o load param_dest:motor:254:101 param_src:bool_num:0
+o while(1)
+o begin
+o if param_src:cm:18 lop:== param_src:buzzertime_num:0 rop:then
+o begin
+o load param_dest:cm:18 param_src:buzzertime_num:255
+o load param_dest:cm:17 param_src:melody_num:16
+o end
+o end
+o end
+- 
