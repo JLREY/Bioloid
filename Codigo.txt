@@ -5,13 +5,13 @@
  4 : 
  5 :     ENDLESS LOOP 
  6 :     { 
- 7 :         RC-100 Channel  = Channel2 (2) 
- 8 :         IF ( Remocon Data Received  == TRUE (1) ) 
+ 7 :         RC-100 Channel  = Channel2 (2) // Asigna al canal 2 como el canal de funcionamiento para la comunicación.
+ 8 :         IF ( Remocon Data Received  == TRUE (1) ) // Verifica que exista una recepción de los datos den control remoto
  9 :         { 
-10 :             DatoRecibido = Remocon RXD  
-11 :             TeclaControl = DatoRecibido & U+D+L+R  
+10 :             DatoRecibido = Remocon RXD  //Guarda el dato recibido por el canal en la variable “DatoRecibido”
+11 :             TeclaControl = DatoRecibido & U+D+L+R  //Aplica una mascara a los datos recibidos para obtener el botón presionado en el control y lo asigna en la variable “TeclaControl”
 12 : 
-13 :             IF ( TeclaControl == 1 ) 
+13 :             IF ( TeclaControl == 1 ) //Verifica que la tecla presionada coincida con el valor asignado a cada botón.
 14 :             { 
 15 :                 //  Velocidades 
 16 :                 ForwardSpeed = 700 
