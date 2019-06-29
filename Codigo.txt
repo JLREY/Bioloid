@@ -1,0 +1,414 @@
+  [CM-530] - smart3.tskx
+ 1 : //  Proyecto: Carro con Trayectoria Guardada o Establecida ~(^_^)~ 
+ 2 : START PROGRAM 
+ 3 : { 
+ 4 : 
+ 5 :     ENDLESS LOOP 
+ 6 :     { 
+ 7 :         RC-100 Channel  = Channel2 (2) 
+ 8 :         IF ( Remocon Data Received  == TRUE (1) ) 
+ 9 :         { 
+10 :             DatoRecibido = Remocon RXD  
+11 :             TeclaControl = DatoRecibido & U+D+L+R  
+12 : 
+13 :             IF ( TeclaControl == 1 ) 
+14 :             { 
+15 :                 //  Velocidades 
+16 :                 ForwardSpeed = 700 
+17 :                 ReverseSpeed = 500 
+18 :                 RotatingSpeed = 600 
+19 :                 //  Avanza 
+20 :                 CALL Forward 
+21 :                 Timer  = 0.512sec 
+22 :                 WAIT WHILE ( Timer  > 0.000sec ) 
+23 :                 CALL Stop 
+24 :             } 
+25 :             ELSE IF ( TeclaControl == 2 ) 
+26 :             { 
+27 :                 //  Velocidades 
+28 :                 ForwardSpeed = 700 
+29 :                 ReverseSpeed = 500 
+30 :                 RotatingSpeed = 600 
+31 :                 //  Reversa 
+32 :                 CALL Reverse 
+33 :                 Timer  = 0.512sec 
+34 :                 WAIT WHILE ( Timer  > 0.000sec ) 
+35 :                 CALL Stop 
+36 :             } 
+37 :             ELSE IF ( TeclaControl == 4 ) 
+38 :             { 
+39 :                 //  Velocidades 
+40 :                 ForwardSpeed = 700 
+41 :                 ReverseSpeed = 500 
+42 :                 RotatingSpeed = 600 
+43 :                 //  Giro izquierda 
+44 :                 CALL TurnLeft 
+45 :                 Timer  = 0.512sec 
+46 :                 WAIT WHILE ( Timer  > 0.000sec ) 
+47 :                 CALL Stop 
+48 :             } 
+49 :             ELSE IF ( TeclaControl == 8 ) 
+50 :             { 
+51 :                 //  Velocidades 
+52 :                 ForwardSpeed = 700 
+53 :                 ReverseSpeed = 500 
+54 :                 RotatingSpeed = 600 
+55 :                 //  Giro derecha 
+56 :                 CALL TurnRight 
+57 :                 Timer  = 0.512sec 
+58 :                 WAIT WHILE ( Timer  > 0.000sec ) 
+59 :                 CALL Stop 
+60 :             } 
+61 :             ELSE 
+62 :             { 
+63 :                 //  Timer  = 0.128sec 
+64 :                 //  WAIT WHILE ( Timer  > 0.000sec ) 
+65 :                 CALL Stop 
+66 :                 //  TeclaControl = 0 
+67 :             } 
+68 :         } 
+69 : 
+70 :         //  Modo programado 
+71 :         IF ( Controller Button  == L  ) 
+72 :         { 
+73 :             //  Velocidades 
+74 :             ForwardSpeed = 1000 
+75 :             ReverseSpeed = 300 
+76 :             RotatingSpeed = 300 
+77 :             //  Avanza hacia el Frente1 
+78 :             CALL Forward 
+79 :             Timer  = 5.632sec 
+80 :             WAIT WHILE ( Timer  > 0.000sec ) 
+81 :             CALL TimerStandby 
+82 :             //  Gira hacia la Derecha1 
+83 :             CALL TurnRight 
+84 :             Timer  = 5.248sec 
+85 :             WAIT WHILE ( Timer  > 0.000sec ) 
+86 :             CALL TimerStandby 
+87 :             //  Avanza hacia el Frente2 
+88 :             CALL Forward 
+89 :             Timer  = 3.712sec 
+90 :             WAIT WHILE ( Timer  > 0.000sec ) 
+91 :             CALL TimerStandby 
+92 :             //  Gira hacia la Izquierda1 
+93 :             CALL TurnLeft 
+94 :             Timer  = 4.736sec 
+95 :             WAIT WHILE ( Timer  > 0.000sec ) 
+96 :             CALL TimerStandby 
+97 :             //  Avanza hacia el Frente3 
+98 :             CALL Forward 
+99 :             Timer  = 3.456sec 
+100 :             WAIT WHILE ( Timer  > 0.000sec ) 
+101 :             CALL TimerStandby 
+102 :             //  Avanza hacia el Frente4 
+103 :             CALL Forward 
+104 :             Timer  = 3.712sec 
+105 :             WAIT WHILE ( Timer  > 0.000sec ) 
+106 :             CALL TimerStandby 
+107 :             //  Gira hacia la Derecha3 
+108 :             CALL TurnRight 
+109 :             Timer  = 5.248sec 
+110 :             WAIT WHILE ( Timer  > 0.000sec ) 
+111 :             CALL TimerStandby 
+112 :             //  Avanza hacia el Frente5 
+113 :             CALL Forward 
+114 :             Timer  = 7.424sec 
+115 :             WAIT WHILE ( Timer  > 0.000sec ) 
+116 :             CALL TimerStandby 
+117 :             //  Gira hacia la Izquierda2 
+118 :             //  Avanza hacia el Frente6 
+119 :             CALL Forward 
+120 :             Timer  = 3.072sec 
+121 :             WAIT WHILE ( Timer  > 0.000sec ) 
+122 :             CALL TimerStandby 
+123 :             //  Gira hacia la Izquierda3 
+124 :             CALL TurnLeft 
+125 :             Timer  = 4.608sec 
+126 :             WAIT WHILE ( Timer  > 0.000sec ) 
+127 :             CALL TimerStandby 
+128 :             //  Avanza hacia el Frente7 
+129 :             CALL Forward 
+130 :             Timer  = 7.040sec 
+131 :             WAIT WHILE ( Timer  > 0.000sec ) 
+132 :             CALL TimerStandby 
+133 :             //  Gira hacia la Derecha4 
+134 :             CALL TurnRight 
+135 :             Timer  = 5.248sec 
+136 :             WAIT WHILE ( Timer  > 0.000sec ) 
+137 :             CALL TimerStandby 
+138 :             //  Avanza hacia el Frente8 
+139 :             CALL Forward 
+140 :             Timer  = 3.072sec 
+141 :             WAIT WHILE ( Timer  > 0.000sec ) 
+142 :             CALL TimerStandby 
+143 :             //  Gira hacia la Izquierda4 
+144 :             CALL TurnLeft 
+145 :             Timer  = 4.608sec 
+146 :             WAIT WHILE ( Timer  > 0.000sec ) 
+147 :             CALL TimerStandby 
+148 :             //  Avanza hacia el Frente9 
+149 :             CALL Forward 
+150 :             Timer  = 0.640sec 
+151 :             WAIT WHILE ( Timer  > 0.000sec ) 
+152 :             CALL Stop 
+153 :         } 
+154 :     } 
+155 : 
+156 :     //  Assembly check 
+157 : AssemblyCheckMode : 
+158 :     //  Assembly check melody 
+159 :     Buzzer Timer  = Melody Time 
+160 :     Buzzer Index  = Melody No.1 (1) 
+161 : 
+162 :     ID = 1 
+163 :     ID[All]:  Moving Velocity = CCW:100 (9.78%) 
+164 :     ID[All]:  Torque ON/OFF = FALSE (0) 
+165 :     ID[All]:  LED = FALSE (0) 
+166 :     Timer  = 1.536sec 
+167 :     CALL WaitTimerCompletion 
+168 : 
+169 :     ENDLESS LOOP 
+170 :     { 
+171 :         IF ( Controller Button  == U  ) 
+172 :         { 
+173 :             ID[All]:  Torque ON/OFF = FALSE (0) 
+174 :             Timer  = 0.640sec 
+175 :             Buzzer Timer  = 0.5sec 
+176 :             Buzzer Index  = Do (15) 
+177 :             CALL WaitTimerCompletion 
+178 :             IF ( ID < 4 ) 
+179 :             { 
+180 :                 ID[ID]: ADDR[24(b)]  = 0 
+181 :                 ID[ID]: ADDR[25(b)]  = 0 
+182 :                 ID = ID + 1 
+183 :             } 
+184 :         } 
+185 :         ELSE IF ( Controller Button  == D  ) 
+186 :         { 
+187 :             ID[All]:  Torque ON/OFF = FALSE (0) 
+188 :             Timer  = 0.640sec 
+189 :             Buzzer Timer  = 0.5sec 
+190 :             Buzzer Index  = Do (3) 
+191 :             CALL WaitTimerCompletion 
+192 :             IF ( ID > 1 ) 
+193 :             { 
+194 :                 ID[ID]: ADDR[24(b)]  = 0 
+195 :                 ID[ID]: ADDR[25(b)]  = 0 
+196 :                 ID = ID - 1 
+197 :             } 
+198 :         } 
+199 :         ELSE IF ( Controller Button  == R  ) 
+200 :             JUMP SensorCheckMode 
+201 :         IF ( ID[ID]: ADDR[3(b)]  != ID ) 
+202 :         { 
+203 :             IF ( Buzzer Timer  == 0.0sec ) 
+204 :             { 
+205 :                 Buzzer Timer  = Melody Time 
+206 :                 Buzzer Index  = Melody No.16 (16) 
+207 :             } 
+208 :         } 
+209 :         ELSE IF ( ID[ID]: ADDR[34(w)]  == 0 ) 
+210 :         { 
+211 :             IF ( Buzzer Timer  == 0.0sec ) 
+212 :             { 
+213 :                 Buzzer Timer  = Melody Time 
+214 :                 Buzzer Index  = Melody No.18 (18) 
+215 :             } 
+216 :         } 
+217 :         ELSE 
+218 :         { 
+219 :             IF ( ID[ID]: ADDR[8(w)]  == 1023 ) 
+220 :             { 
+221 :                 ID[ID]: ADDR[30(w)]  = 512 
+222 :                 ID[ID]: ADDR[25(b)]  = 1 
+223 :             } 
+224 :             ELSE 
+225 :             { 
+226 :                 ID[ID]: ADDR[32(w)]  = 512 
+227 :                 ID[ID]: ADDR[25(b)]  = 1 
+228 :             } 
+229 :         } 
+230 :     } 
+231 : SensorCheckMode : 
+232 :     ID[All]:  Moving Velocity = CCW:100 (9.78%) 
+233 :     ID[All]:  LED = FALSE (0) 
+234 :     ID[All]:  Torque ON/OFF = FALSE (0) 
+235 :     Buzzer Timer  = Melody Time 
+236 :     Buzzer Index  = Melody No.10 (10) 
+237 :     CALL AssemblyCheckPosition 
+238 :     ENDLESS LOOP 
+239 :     { 
+240 :         IF ( Controller Button  == L  ) 
+241 :             JUMP AssemblyCheckMode 
+242 :         IF ( PORT[1]:IR Sensor  >= 50 ) 
+243 :         { 
+244 :             ID[3]: ADDR[32(w)]  = 512 
+245 :             ID[4]: ADDR[32(w)]  = 512 
+246 :         } 
+247 :         ELSE 
+248 :         { 
+249 :             ID[3]: ADDR[32(w)]  = 0 
+250 :             ID[4]: ADDR[32(w)]  = 0 
+251 :         } 
+252 :         IF ( PORT[2]:IR Sensor  >= 50 ) 
+253 :         { 
+254 :             ID[1]: ADDR[32(w)]  = 512 
+255 :             ID[2]: ADDR[32(w)]  = 512 
+256 :         } 
+257 :         ELSE 
+258 :         { 
+259 :             ID[1]: ADDR[32(w)]  = 0 
+260 :             ID[2]: ADDR[32(w)]  = 0 
+261 :         } 
+262 :     } 
+263 :     //  Assembly check 
+264 : } 
+265 : 
+266 : FUNCTION AvoidCliff 
+267 : { 
+268 :     CALL Reverse 
+269 : 
+270 :     Timer  = 12 
+271 :     CALL TimerStandby 
+272 : 
+273 :     CALL FallbackRight 
+274 : 
+275 :     Timer  = 16 
+276 :     CALL TimerStandby 
+277 : 
+278 :     CALL Forward 
+279 : } 
+280 : 
+281 : FUNCTION AvoidObject 
+282 : { 
+283 :     CALL Reverse 
+284 : 
+285 :     Timer  = 6 
+286 :     CALL TimerStandby 
+287 : 
+288 :     CALL TurnRight 
+289 : 
+290 :     Timer  = 12 
+291 :     CALL TimerStandby 
+292 : 
+293 :     CALL Forward 
+294 : } 
+295 : 
+296 : FUNCTION TimerStandby 
+297 : { 
+298 :     WAIT WHILE ( Timer  > 0.000sec ) 
+299 : } 
+300 : 
+301 : FUNCTION Stop 
+302 : { 
+303 :     ID[1]:  Moving Velocity = 0 
+304 :     ID[2]:  Moving Velocity = 0 
+305 :     ID[3]:  Moving Velocity = 0 
+306 :     ID[4]:  Moving Velocity = 0 
+307 : } 
+308 : 
+309 : FUNCTION Forward 
+310 : { 
+311 :     ID[1]:  Moving Velocity = CW:0 (0.00%) + ForwardSpeed 
+312 :     ID[2]:  Moving Velocity = CCW:0 (0.00%) + ForwardSpeed 
+313 :     ID[3]:  Moving Velocity = CW:0 (0.00%) + ForwardSpeed 
+314 :     ID[4]:  Moving Velocity = CCW:0 (0.00%) + ForwardSpeed 
+315 : } 
+316 : 
+317 : FUNCTION Reverse 
+318 : { 
+319 :     ID[1]:  Moving Velocity = CCW:0 (0.00%) + ReverseSpeed 
+320 :     ID[2]:  Moving Velocity = CW:0 (0.00%) + ReverseSpeed 
+321 :     ID[3]:  Moving Velocity = CCW:0 (0.00%) + ReverseSpeed 
+322 :     ID[4]:  Moving Velocity = CW:0 (0.00%) + ReverseSpeed 
+323 : } 
+324 : 
+325 : FUNCTION TurnRight 
+326 : { 
+327 :     ID[1]:  Moving Velocity = 0 
+328 :     ID[2]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+329 :     ID[3]:  Moving Velocity = 0 
+330 :     ID[4]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+331 : } 
+332 : 
+333 : FUNCTION TurnLeft 
+334 : { 
+335 :     ID[1]:  Moving Velocity = CW:0 (0.00%) + RotatingSpeed 
+336 :     ID[2]:  Moving Velocity = 0 
+337 :     ID[3]:  Moving Velocity = CW:0 (0.00%) + RotatingSpeed 
+338 :     ID[4]:  Moving Velocity = 0 
+339 : } 
+340 : FUNCTION FallbackRight 
+341 : { 
+342 :     ID[1]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+343 :     ID[2]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+344 :     ID[3]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+345 :     ID[4]:  Moving Velocity = CCW:0 (0.00%) + RotatingSpeed 
+346 : } 
+347 : 
+348 : FUNCTION ActuatorInitialization 
+349 : { 
+350 :     ID[1]: ADDR[8(w)]  = 0000 0000 0000 0000 
+351 :     ID[2]: ADDR[8(w)]  = 0000 0000 0000 0000 
+352 :     ID[3]: ADDR[8(w)]  = 0000 0000 0000 0000 
+353 :     ID[4]: ADDR[8(w)]  = 0000 0000 0000 0000 
+354 : } 
+355 : 
+356 : 
+357 : FUNCTION Advance 
+358 : { 
+359 :     Buzzer Timer  = Melody Time 
+360 :     Buzzer Index  = Melody No.3 (3) 
+361 : } 
+362 : FUNCTION Retreat 
+363 : { 
+364 :     Buzzer Timer  = Melody Time 
+365 :     Buzzer Index  = Melody No.4 (4) 
+366 : } 
+367 : FUNCTION ForwardLeft 
+368 : { 
+369 :     Buzzer Timer  = Melody Time 
+370 :     Buzzer Index  = Melody No.1 (1) 
+371 :     CALL TurnLeft 
+372 :     Timer  = 3.072sec 
+373 :     WAIT WHILE ( Timer  > 0.000sec ) 
+374 :     CALL Stop 
+375 : } 
+376 : FUNCTION ForwardRight 
+377 : { 
+378 :     Buzzer Timer  = Melody Time 
+379 :     Buzzer Index  = Melody No.1 (1) 
+380 :     CALL TurnRight 
+381 :     Timer  = 3.072sec 
+382 :     WAIT WHILE ( Timer  > 0.000sec ) 
+383 :     CALL Stop 
+384 : } 
+385 : //  Seembly check 
+386 : FUNCTION WaitTimerCompletion 
+387 : { 
+388 :     WAIT WHILE ( Timer  > 0.000sec ) 
+389 : } 
+390 : 
+391 : FUNCTION AssemblyCheckPosition 
+392 : { 
+393 :     LOOP FOR ( ID = 1 ~  4 ) 
+394 :     { 
+395 :         ID[ID]: ADDR[30(w)]  = 512 
+396 :     } 
+397 : } 
+398 : 
+399 : FUNCTION AssemblyError 
+400 : { 
+401 :     ID[All]:  Moving Velocity = CCW:100 (9.78%) 
+402 :     ID[All]:  Torque ON/OFF = FALSE (0) 
+403 :     ID[All]:  LED = FALSE (0) 
+404 :     ENDLESS LOOP 
+405 :     { 
+406 :         IF ( Buzzer Timer  == 0.0sec ) 
+407 :         { 
+408 :             Buzzer Timer  = Melody Time 
+409 :             Buzzer Index  = Melody No.16 (16) 
+410 :         } 
+411 :     } 
+412 : } 
+413 : 
