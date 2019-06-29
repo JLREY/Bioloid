@@ -1,0 +1,17 @@
+http://emanual.robotis.com/docs/en/parts/communication/rc-100/
+
+http://emanual.robotis.com/docs/en/software/rplus1/task/programming_02/#rc-100-channel
+
+http://emanual.robotis.com/docs/en/parts/controller/cm-530/
+
+http://emanual.robotis.com/docs/en/edu/bioloid/premium/
+
+https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/software/rplus2/task.md
+
+https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/edu/bioloid/gp.md
+
+http://emanual.robotis.com/docs/en/faq/download_task_code/
+
+http://emanual.robotis.com/docs/en/edu/ollo/bugkit/
+
+http://support.robotis.com/en/software/roboplus/roboplus_task/programming/parameter/controller/roboplus_task_cm_txrx.htm
